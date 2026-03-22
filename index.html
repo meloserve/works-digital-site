@@ -19,10 +19,12 @@ body {
   background: #fff;
 }
 
+/* HEADER */
 header {
   padding: 30px 60px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: sticky;
   top: 0;
   background: #fff;
@@ -38,6 +40,11 @@ header {
   letter-spacing: 6px;
 }
 
+nav {
+  display: flex;
+  align-items: center;
+}
+
 nav a {
   margin-left: 20px;
   text-decoration: none;
@@ -46,20 +53,24 @@ nav a {
   letter-spacing: 2px;
 }
 
-section {
-  padding: 100px 60px;
-  border-bottom: 1px solid #eee;
-}
-
+/* HERO */
 .hero {
   padding: 140px 60px;
 }
 
-h2 {
-  letter-spacing: 3px;
-  margin-bottom: 20px;
+h1 {
+  font-size: 42px;
 }
 
+h2 {
+  letter-spacing: 3px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -74,6 +85,43 @@ h2 {
 .btn:hover {
   background: #333;
   color: #fff;
+}
+
+/* SECTION */
+section {
+  padding: 100px 60px;
+  border-bottom: 1px solid #eee;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+  header {
+    padding: 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    margin-left: 10px;
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 80px 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
 }
 </style>
 </head>
