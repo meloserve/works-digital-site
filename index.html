@@ -100,11 +100,14 @@ footer {
   header { padding: 20px; }
 
   nav {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-end;
+    overflow-x: auto;
   }
 
   nav a {
+    flex-shrink: 0;
+    white-space: nowrap;
     margin-left: 10px;
     font-size: 10px;
   }
@@ -114,7 +117,6 @@ footer {
 
   section { padding: 60px 20px; }
 
-  /* ★追加（ここが今回の修正） */
   h1, h2, p {
     text-align: center;
   }
