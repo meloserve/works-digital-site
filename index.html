@@ -26,6 +26,7 @@ header {
   position: sticky;
   top: 0;
   background: #fff;
+  z-index: 1000; /* ←クリック安定 */
 }
 
 .logo { font-weight: 700; letter-spacing: 4px; }
@@ -138,6 +139,20 @@ footer {
   }
 
 }
+
+/* FADE */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+  pointer-events: none; 
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 </style>
 </head>
 
@@ -167,32 +182,32 @@ footer {
   </a>
 </section>
 
-<section id="about">
+<section id="about" class="fade">
   <h2>ABOUT</h2>
   <p>We design the undefined space between operations and information systems.</p>
 </section>
 
-<section id="service">
+<section id="service" class="fade">
   <h2>SERVICE</h2>
   <p>Workflow Design / System Architecture / DX Support</p>
 </section>
 
-<section id="share">
+<section id="share" class="fade">
   <h2>SHARE OFFICE</h2>
   <p>Flexible workspace for digital professionals.</p>
 </section>
 
-<section id="news">
+<section id="news" class="fade">
   <h2>NEWS</h2>
   <p>Latest updates coming soon.</p>
 </section>
 
-<section id="company">
+<section id="company" class="fade">
   <h2>COMPANY</h2>
   <p>WORKS DIGITAL Co., Ltd.</p>
 </section>
 
-<section id="contact">
+<section id="contact" class="fade">
   <h2>CONTACT</h2>
   <p>Contact form coming soon.</p>
 </section>
@@ -221,6 +236,18 @@ function openBooking() {
 function closeBooking() {
   document.getElementById("bookingModal").style.display = "none";
 }
+
+/* FADE SCRIPT */
+const fades = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  fades.forEach(el => {
+    const rect = el.getBoundingClientRect().top;
+    if (rect < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
 </script>
 
 </body>
