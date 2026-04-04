@@ -1,0 +1,16 @@
+name: Slack Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack
+        run: |
+          curl -X POST -H "Content-type: application/json" \
+          --data '{"text":"🔥 Slack test from GitHub Actions"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
