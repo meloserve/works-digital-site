@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>WORKS DIGITAL</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -10,14 +10,33 @@
 <style>
 html { scroll-behavior: smooth; }
 
+/* ===== CURSOR OFF ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   color: #333;
   background: #fff;
+  cursor: none;
 }
 
-/* HEADER */
+/* ===== VIRTUAL CURSOR ===== */
+.virtual-cursor {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    width 0.2s,
+    height 0.2s;
+}
+
+/* ===== HEADER ===== */
 header {
   padding: 30px 60px;
   display: flex;
@@ -26,7 +45,7 @@ header {
   position: sticky;
   top: 0;
   background: #fff;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .logo { font-weight: 700; letter-spacing: 4px; }
@@ -46,7 +65,7 @@ nav a {
   position: relative;
 }
 
-/* NAV HOVER */
+/* ===== NAV HOVER ===== */
 nav a::after {
   content: "";
   position: absolute;
@@ -57,18 +76,17 @@ nav a::after {
   background: #333;
   transition: 0.3s;
 }
-
 nav a:hover::after {
   width: 100%;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero { padding: 140px 60px; }
 h1 { font-size: 42px; }
 h2 { letter-spacing: 3px; }
 p { line-height: 1.8; }
 
-/* BUTTON */
+/* ===== BUTTON ===== */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -78,21 +96,20 @@ p { line-height: 1.8; }
   color: #333;
   letter-spacing: 2px;
   transition: 0.3s;
-  cursor: pointer;
 }
-
 .btn:hover {
   background: #333;
   color: #fff;
+  transform: translateY(-2px);
 }
 
-/* SECTION */
+/* ===== SECTION ===== */
 section {
   padding: 100px 60px;
   border-bottom: 1px solid #eee;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 footer {
   padding: 40px;
   text-align: center;
@@ -100,7 +117,7 @@ footer {
   color: #777;
 }
 
-/* MODAL */
+/* ===== MODAL ===== */
 #bookingModal {
   display: none;
   position: fixed;
@@ -115,8 +132,11 @@ footer {
   z-index: 999;
 }
 
-/* MOBILE */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
+
+  body { cursor: auto; }
+  .virtual-cursor { display: none; }
 
   header {
     padding: 20px;
@@ -140,9 +160,7 @@ footer {
 
   section { padding: 60px 20px; }
 
-  h1, h2, p {
-    text-align: center;
-  }
+  h1, h2, p { text-align: center; }
 
   #bookingModal div {
     display: flex;
@@ -154,17 +172,15 @@ footer {
     width: 80%;
     text-align: center;
   }
-
 }
 
-/* FADE */
+/* ===== FADE ===== */
 .fade {
   opacity: 0;
   transform: translateY(20px);
   transition: 0.6s;
-  pointer-events: none; 
+  pointer-events: none;
 }
-
 .fade.show {
   opacity: 1;
   transform: translateY(0);
@@ -174,6 +190,9 @@ footer {
 </head>
 
 <body>
+
+<!-- CURSOR -->
+<div class="virtual-cursor" id="cursor"></div>
 
 <header>
   <div>
@@ -193,70 +212,37 @@ footer {
 <section class="hero">
   <h1>Business & System Design</h1>
   <p>Designing the undefined space between business and systems.</p>
-
-  <a onclick="openBooking()" class="btn">
-    BOOK A SPACE
-  </a>
+  <a onclick="openBooking()" class="btn">BOOK A SPACE</a>
 </section>
 
-<section id="about" class="fade">
-  <h2>ABOUT</h2>
-  <p>We design the undefined space between operations and information systems.</p>
-</section>
+<section id="about" class="fade"><h2>ABOUT</h2></section>
+<section id="service" class="fade"><h2>SERVICE</h2></section>
+<section id="share" class="fade"><h2>SHARE OFFICE</h2></section>
+<section id="news" class="fade"><h2>NEWS</h2></section>
+<section id="company" class="fade"><h2>COMPANY</h2></section>
+<section id="contact" class="fade"><h2>CONTACT</h2></section>
 
-<section id="service" class="fade">
-  <h2>SERVICE</h2>
-  <p>Workflow Design / System Architecture / DX Support</p>
-</section>
+<footer>© 2026 WORKS DIGITAL Co., Ltd.</footer>
 
-<section id="share" class="fade">
-  <h2>SHARE OFFICE</h2>
-  <p>Flexible workspace for digital professionals.</p>
-</section>
-
-<section id="news" class="fade">
-  <h2>NEWS</h2>
-  <p>Latest updates coming soon.</p>
-</section>
-
-<section id="company" class="fade">
-  <h2>COMPANY</h2>
-  <p>WORKS DIGITAL Co., Ltd.</p>
-</section>
-
-<section id="contact" class="fade">
-  <h2>CONTACT</h2>
-  <p>Contact form coming soon.</p>
-</section>
-
-<footer>
-  © 2026 WORKS DIGITAL Co., Ltd. All Rights Reserved.
-</footer>
-
-<!-- MODAL -->
 <div id="bookingModal">
-  <h2>What do you want to book?</h2>
-
   <div style="margin-top:20px;">
-    <a href="https://calendar.app.google/jhtGub4u4WqRioit6" target="_blank" class="btn">OFFICE</a>
-    <a href="https://calendar.app.google/FurURr7vJDFDzrS2A" target="_blank" class="btn" style="margin-left:10px;">INTERVIEW</a>
+    <a href="#" class="btn">OFFICE</a>
+    <a href="#" class="btn">INTERVIEW</a>
   </div>
-
-  <p style="margin-top:40px; cursor:pointer;" onclick="closeBooking()">CLOSE</p>
+  <p onclick="closeBooking()">CLOSE</p>
 </div>
 
 <script>
+/* MODAL */
 function openBooking() {
   document.getElementById("bookingModal").style.display = "flex";
 }
-
 function closeBooking() {
   document.getElementById("bookingModal").style.display = "none";
 }
 
-/* FADE SCRIPT */
+/* FADE */
 const fades = document.querySelectorAll('.fade');
-
 window.addEventListener('scroll', () => {
   fades.forEach(el => {
     const rect = el.getBoundingClientRect().top;
@@ -265,6 +251,55 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+/* CURSOR */
+const cursor = document.getElementById('cursor');
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let currentX = mouseX;
+let currentY = mouseY;
+let speed = 0.12;
+
+window.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+window.addEventListener('mousedown', () => {
+  speed = 0.2;
+  cursor.style.background = '#888';
+});
+window.addEventListener('mouseup', () => {
+  speed = 0.12;
+  cursor.style.background = 'rgba(0,0,0,0.8)';
+});
+
+/* HOVER EFFECT */
+const hoverTargets = document.querySelectorAll('a, .btn');
+
+hoverTargets.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '28px';
+    cursor.style.height = '28px';
+    cursor.style.background = 'rgba(0,0,0,0.2)';
+  });
+
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '14px';
+    cursor.style.height = '14px';
+    cursor.style.background = 'rgba(0,0,0,0.8)';
+  });
+});
+
+/* ANIMATION */
+function animate() {
+  currentX += (mouseX - currentX) * speed;
+  currentY += (mouseY - currentY) * speed;
+  cursor.style.left = currentX + 'px';
+  cursor.style.top = currentY + 'px';
+  requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
