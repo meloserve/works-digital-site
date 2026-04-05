@@ -10,7 +10,7 @@
 <style>
 html { scroll-behavior: smooth; }
 
-/* ===== CURSOR OFF ===== */
+/* ===== BODY ===== */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -19,7 +19,7 @@ body {
   cursor: none;
 }
 
-/* ===== VIRTUAL CURSOR ===== */
+/* ===== CURSOR ===== */
 .virtual-cursor {
   position: fixed;
   width: 14px;
@@ -29,11 +29,13 @@ body {
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    width 0.2s,
-    height 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 8px;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
 }
 
 /* ===== HEADER ===== */
@@ -65,7 +67,7 @@ nav a {
   position: relative;
 }
 
-/* ===== NAV HOVER ===== */
+/* NAV HOVER */
 nav a::after {
   content: "";
   position: absolute;
@@ -80,13 +82,13 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* ===== HERO ===== */
+/* HERO */
 .hero { padding: 140px 60px; }
 h1 { font-size: 42px; }
 h2 { letter-spacing: 3px; }
 p { line-height: 1.8; }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -100,16 +102,15 @@ p { line-height: 1.8; }
 .btn:hover {
   background: #333;
   color: #fff;
-  transform: translateY(-2px);
 }
 
-/* ===== SECTION ===== */
+/* SECTION */
 section {
   padding: 100px 60px;
   border-bottom: 1px solid #eee;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer {
   padding: 40px;
   text-align: center;
@@ -117,7 +118,7 @@ footer {
   color: #777;
 }
 
-/* ===== MODAL ===== */
+/* MODAL */
 #bookingModal {
   display: none;
   position: fixed;
@@ -132,7 +133,7 @@ footer {
   z-index: 999;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media (max-width: 768px) {
 
   body { cursor: auto; }
@@ -162,19 +163,13 @@ footer {
 
   h1, h2, p { text-align: center; }
 
-  #bookingModal div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .btn {
     width: 80%;
     text-align: center;
   }
 }
 
-/* ===== FADE ===== */
+/* FADE */
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -192,7 +187,9 @@ footer {
 <body>
 
 <!-- CURSOR -->
-<div class="virtual-cursor" id="cursor"></div>
+<div class="virtual-cursor" id="cursor">
+  <span id="cursorText"></span>
+</div>
 
 <header>
   <div>
@@ -225,6 +222,7 @@ footer {
 <footer>© 2026 WORKS DIGITAL Co., Ltd.</footer>
 
 <div id="bookingModal">
+  <h2>What do you want to book?</h2>
   <div style="margin-top:20px;">
     <a href="#" class="btn">OFFICE</a>
     <a href="#" class="btn">INTERVIEW</a>
@@ -254,6 +252,8 @@ window.addEventListener('scroll', () => {
 
 /* CURSOR */
 const cursor = document.getElementById('cursor');
+const cursorText = document.getElementById('cursorText');
+
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 let currentX = mouseX;
@@ -267,31 +267,45 @@ window.addEventListener('mousemove', e => {
 
 window.addEventListener('mousedown', () => {
   speed = 0.2;
-  cursor.style.background = '#888';
+  cursor.style.background = '#555';
+  cursorText.innerText = 'CLICK';
 });
 window.addEventListener('mouseup', () => {
   speed = 0.12;
   cursor.style.background = 'rgba(0,0,0,0.8)';
+  cursorText.innerText = '';
 });
 
-/* HOVER EFFECT */
+/* HOVER + MAGNET */
 const hoverTargets = document.querySelectorAll('a, .btn');
 
 hoverTargets.forEach(el => {
+
   el.addEventListener('mouseenter', () => {
-    cursor.style.width = '28px';
-    cursor.style.height = '28px';
-    cursor.style.background = 'rgba(0,0,0,0.2)';
+    cursor.style.width = '40px';
+    cursor.style.height = '40px';
+    cursor.style.background = 'rgba(0,0,0,0.6)';
+    cursorText.innerText = 'VIEW';
   });
 
   el.addEventListener('mouseleave', () => {
     cursor.style.width = '14px';
     cursor.style.height = '14px';
     cursor.style.background = 'rgba(0,0,0,0.8)';
+    cursorText.innerText = '';
+    el.style.transform = 'translate(0,0)';
   });
+
+  el.addEventListener('mousemove', (e) => {
+    const rect = el.getBoundingClientRect();
+    const offsetX = e.clientX - (rect.left + rect.width / 2);
+    const offsetY = e.clientY - (rect.top + rect.height / 2);
+    el.style.transform = `translate(${offsetX * 0.2}px, ${offsetY * 0.2}px)`;
+  });
+
 });
 
-/* ANIMATION */
+/* ANIMATION LOOP */
 function animate() {
   currentX += (mouseX - currentX) * speed;
   currentY += (mouseY - currentY) * speed;
