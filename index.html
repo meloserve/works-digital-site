@@ -204,7 +204,7 @@ footer {
   }
 
   /* NEWS */
-.news {
+#news {
   text-align: center;
 }
 
@@ -221,6 +221,16 @@ footer {
 
 .news-item h3 {
   margin: 10px 0;
+}
+
+ /* COMPANY */
+.map {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+#company p {
+  text-align: center;
 }
 
 </style>
@@ -310,7 +320,23 @@ footer {
 
   <a href="news.html" class="btn">VIEW ALL NEWS →</a>
 </section>
-<section id="company" class="fade"><h2>COMPANY</h2></section>
+<section id="company" class="fade">
+  <h2>COMPANY</h2>
+
+  <div class="map">
+    <iframe 
+      src="https://www.google.com/maps?q=Shibuya+Tokyo&output=embed"
+      width="100%" 
+      height="400" 
+      style="border:0;" 
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <p>
+    WORKS DIGITAL Office
+  </p>
+</section>
 <section id="contact" class="fade">
   <h2>CONTACT</h2>
 
