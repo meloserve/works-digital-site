@@ -67,7 +67,7 @@ nav a {
   position: relative;
 }
 
-/* NAV HOVER */
+/* ==== NAV HOVER ==== */
 nav a::after {
   content: "";
   position: absolute;
@@ -82,7 +82,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* HERO */
+/* ==== HERO ==== */
 .hero { 
   padding: 140px 60px; 
   
@@ -95,7 +95,7 @@ h1 { font-size: 42px; }
 h2 { letter-spacing: 3px; }
 p { line-height: 1.8; }
 
-/* BUTTON */
+/* ==== BUTTON ==== */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -111,13 +111,13 @@ p { line-height: 1.8; }
   color: #fff;
 }
 
-/* SECTION */
+/* ==== SECTION ==== */
 section {
   padding: 100px 60px;
   border-bottom: 1px solid #eee;
 }
 
-/* FOOTER */
+/* ==== FOOTER ==== */
 footer {
   padding: 40px;
   text-align: center;
@@ -125,7 +125,7 @@ footer {
   color: #777;
 }
 
-/* MODAL */
+/* ==== MODAL ==== */
 #bookingModal {
   display: none;
   position: fixed;
@@ -140,7 +140,7 @@ footer {
   z-index: 999;
 }
 
-/* MOBILE */
+/* ==== MOBILE ==== */
 @media (max-width: 768px) {
 
   body { cursor: auto; }
@@ -176,7 +176,7 @@ footer {
   }
 }
 
-/* FADE */
+/* ==== FADE ==== */
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -203,7 +203,7 @@ footer {
     font-family: inherit;
   }
 
-  /* NEWS */
+  /* ==== NEWS ==== */
 #news {
   text-align: center;
 }
@@ -223,7 +223,7 @@ footer {
   margin: 10px 0;
 }
 
- /* COMPANY */
+ /* ==== COMPANY ==== */
 .map {
   max-width: 800px;
   margin: 40px auto;
@@ -236,7 +236,6 @@ footer {
 /* ===== MOBILE FIX ===== */
 @media (max-width: 768px) {
 
-  /* ① 画像ズレ修正 */
   #about img,
   #service img {
     width: 100%;
@@ -245,7 +244,6 @@ footer {
     margin: 0 auto;
   }
 
-  /* ② CONTACT崩れ修正 */
   #contact form {
     margin: 30px auto;
     width: 100%;
@@ -309,7 +307,34 @@ footer {
     alt="About image"
   >
 
-  <p>We design business systems and digital structures.</p>
+ <p>
+  We design business systems and digital structures.<br><br>
+
+  業務と情報のあいだにある<br>
+  「設計されていない部分」を設計する、<br>
+  エンタープライズ向けデジタルソリューション企業です。
+</p>
+
+<p style="margin-top:20px; font-size:14px;">
+  業務設計・情報システム設計<br>
+  地方DX支援・グローバル展開支援<br>
+  設計・導入・運用・保守までの一気通貫サービス<br>
+  シェアオフィスサービス
+</p>
+
+<div style="margin-top:40px; text-align:center;">
+
+  <div style="letter-spacing:6px; font-size:12px;">
+    ||||||||||||||||||||
+  </div>
+
+  <div style="margin-top:10px; font-weight:600;">
+    株式会社 Works Digital
+  </div>
+
+  <div style="margin-top:10px; font-size:18px;">
+    ⬜️ 🟫 🟩 🟦
+  </div>
 </section>
 
 <section id="service" class="fade">
@@ -326,7 +351,20 @@ footer {
     alt="Service image"
   >
 
-  <p>We provide system design, development, and business optimization.</p>
+  <p>
+  We provide system design, development, and business optimization.<br><br>
+
+  Re-novation company as,<br>
+  …Post modern-ism and get favor color fit in eligible market trend…
+</p>
+
+<div style="margin-top:40px; text-align:center;">
+
+  <div style="margin-top:10px; font-weight:600;">
+    再生・繁栄・育成
+  </div>
+
+</div>
 </section>
 
 <section id="share" class="fade">
@@ -390,16 +428,16 @@ footer {
 <footer>© 2026 WORKS DIGITAL Co., Ltd.</footer>
 
 <div id="bookingModal">
-  <h2>What do you want to book?</h2>
+  <h2>SELECT A BOOKING OPTION</h2>
   <div style="margin-top:20px;">
-    <a href="https://calendar.app.google/jhtGub4u4WqRioit6" class="btn">OFFICE</a>
-    <a href="https://calendar.app.google/FurURr7vJDFDzrS2A" class="btn">INTERVIEW</a>
+    <a href="https://calendar.app.google/jhtGub4u4WqRioit6" class="btn">For OFFICE</a>
+    <a href="https://calendar.app.google/FurURr7vJDFDzrS2A" class="btn">For INTERVIEW</a>
   </div>
   <p onclick="closeBooking()">CLOSE</p>
 </div>
 
 <script>
-/* MODAL */
+/* ==== MODAL ==== */
 function openBooking() {
   document.getElementById("bookingModal").style.display = "flex";
 }
@@ -407,7 +445,7 @@ function closeBooking() {
   document.getElementById("bookingModal").style.display = "none";
 }
 
-/* FADE */
+/* ==== FADE ==== */
 const fades = document.querySelectorAll('.fade');
 window.addEventListener('scroll', () => {
   fades.forEach(el => {
@@ -418,7 +456,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-/* CURSOR */
+/* ==== CURSOR ==== */
 const cursor = document.getElementById('cursor');
 const cursorText = document.getElementById('cursorText');
 
@@ -444,7 +482,7 @@ window.addEventListener('mouseup', () => {
   cursorText.innerText = '';
 });
 
-/* HOVER + MAGNET */
+/* ==== HOVER + MAGNET ==== */
 const hoverTargets = document.querySelectorAll('a, .btn');
 
 hoverTargets.forEach(el => {
@@ -473,7 +511,7 @@ hoverTargets.forEach(el => {
 
 });
 
-/* ANIMATION LOOP */
+/* ==== ANIMATION LOOP ==== */
 function animate() {
   currentX += (mouseX - currentX) * speed;
   currentY += (mouseY - currentY) * speed;
