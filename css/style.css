@@ -1,17 +1,6 @@
-/* ===== BASE ===== */
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  color: #333;
-  background: #fff;
-  cursor: none;
-}
-
-html { scroll-behavior: smooth; }
-
 /* ===== BODY ===== */
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
