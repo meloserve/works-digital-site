@@ -1,4 +1,14 @@
-<style>
+/* ===== BASE ===== */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+  background: #fff;
+  cursor: none;
+}
+
 html { scroll-behavior: smooth; }
 
 /* ===== BODY ===== */
@@ -58,7 +68,7 @@ nav a {
   position: relative;
 }
 
-/* NAV HOVER */
+/* ==== NAV HOVER ==== */
 nav a::after {
   content: "";
   position: absolute;
@@ -73,13 +83,20 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* HERO */
-.hero { padding: 140px 60px; }
+/* ==== HERO ==== */
+.hero { 
+  padding: 140px 60px; 
+  
+  background-color: #f3f4f6;
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 h1 { font-size: 42px; }
 h2 { letter-spacing: 3px; }
 p { line-height: 1.8; }
 
-/* BUTTON */
+/* ==== BUTTON ==== */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -95,13 +112,13 @@ p { line-height: 1.8; }
   color: #fff;
 }
 
-/* SECTION */
+/* ==== SECTION ==== */
 section {
   padding: 100px 60px;
   border-bottom: 1px solid #eee;
 }
 
-/* FOOTER */
+/* ==== FOOTER ==== */
 footer {
   padding: 40px;
   text-align: center;
@@ -109,7 +126,7 @@ footer {
   color: #777;
 }
 
-/* MODAL */
+/* ==== MODAL ==== */
 #bookingModal {
   display: none;
   position: fixed;
@@ -124,7 +141,7 @@ footer {
   z-index: 999;
 }
 
-/* MOBILE */
+/* ==== MOBILE ==== */
 @media (max-width: 768px) {
 
   body { cursor: auto; }
@@ -160,7 +177,7 @@ footer {
   }
 }
 
-/* FADE */
+/* ==== FADE ==== */
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -172,4 +189,76 @@ footer {
   transform: translateY(0);
   pointer-events: auto;
 }
-</style>
+
+#contact form {
+    margin-top: 30px;
+    max-width: 500px;
+  }
+
+  #contact input,
+  #contact textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+  }
+
+  /* ==== NEWS ==== */
+#news {
+  text-align: center;
+}
+
+.news-item {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.news-item .date {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 2px;
+}
+
+.news-item h3 {
+  margin: 10px 0;
+}
+
+ /* ==== COMPANY ==== */
+.map {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+#company p {
+  text-align: center;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+  #about img,
+  #service img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #contact form {
+    margin: 30px auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #contact input,
+  #contact textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #contact button {
+    width: 100%;
+  }
+
+}
